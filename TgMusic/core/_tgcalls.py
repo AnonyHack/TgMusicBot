@@ -128,6 +128,10 @@ class Calls:
                 api_id=api_id,
                 api_hash=api_hash,
                 session_string=session_string,
+                fetch_replies=False,
+                fetch_stories=False,
+                fetch_topics=False,
+                fetch_stickers=False,
             )
             calls = PyTgCalls(user_bot, cache_duration=100)
             self.calls[client_name] = calls
@@ -148,21 +152,6 @@ class Calls:
                     await client.stop()
             except Exception as e:
                 LOGGER.error("Error stopping client %s: %s", name, e)
-
-    async def health_check(self) -> None:
-        for name, client in self.pyrogram_clients.items():
-            try:
-                await client.get_me()
-                if not client.is_connected:
-                    raise RuntimeError("Client not connected")
-                LOGGER.debug("Client %s is healthy", name)
-            except (errors.Flood, errors.FloodWait):
-                LOGGER.warning("Flood error while checking health of client %s", name)
-            except errors.RPCError as e:
-                LOGGER.error("Error checking health of client %s: %s", name, e)
-            except Exception as e:
-                LOGGER.error("Error checking health of client %s: %s", name, e)
-                raise RuntimeError(f"Failed to check health of client {name}: {str(e)}") from e
 
     async def register_decorators(self) -> None:
         """Register pytgcalls event handlers."""

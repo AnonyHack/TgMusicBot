@@ -14,8 +14,4 @@ COPY . /app/
 
 RUN uv pip install -e . --system
 
-# Health check configuration
-HEALTHCHECK --interval=60s --timeout=10s --start-period=10s --retries=3 \
-  CMD curl -f http://localhost:5068/health || exit 1
-
 CMD ["tgmusic"]

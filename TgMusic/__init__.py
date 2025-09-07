@@ -4,7 +4,6 @@
 
 
 import asyncio
-import random
 from datetime import datetime
 
 from pytdbot import types, Client
@@ -13,7 +12,7 @@ __version__ = "1.2.3"
 StartTime = datetime.now()
 
 
-from TgMusic.core import call, tg, db, config, HealthCheck
+from TgMusic.core import call, tg, db, config
 
 
 class Bot(Client):
@@ -32,7 +31,6 @@ class Bot(Client):
             database_encryption_key="",
             options={"ignore_background_updates": config.IGNORE_BACKGROUND_UPDATES},
         )
-        self.health_check = HealthCheck(client=self, port=config.PORT)
         self._initialize_services()
 
     def _initialize_services(self) -> None:
@@ -80,11 +78,6 @@ class Bot(Client):
         await self.call.register_decorators()
         await super().start()
         await self.call_manager.start()
-        try:
-            await self.health_check.start()
-        except Exception as e:
-            self.logger.error(f"Failed to start health check: {e}")
-
         self.logger.info("Bot started successfully")
 
 
@@ -95,7 +88,6 @@ class Bot(Client):
                 self.db.close(),
                 self.call_manager.stop(),
                 self.call.stop_all_clients(),
-                self.health_check.stop(),
             ]
 
             if graceful:
