@@ -30,13 +30,13 @@ class BotConfig:
 
         self.SESSION_STRINGS: list[str] = self._get_session_strings()
         self.MONGO_URI: Optional[str] = os.getenv("MONGO_URI")
-        self.DB_NAME: str = os.getenv("DB_NAME", "MusicBot")
+        self.DB_NAME: str = os.getenv("DB_NAME", "MusicHub Test")
         self.API_URL: str = os.getenv("API_URL", "https://tgmusic.fallenapi.fun")
         self.API_KEY: Optional[str] = os.getenv("API_KEY")
 
         # Owner and Logger
-        self.OWNER_ID: int = self._get_env_int("OWNER_ID", 5938660179)
-        self.LOGGER_ID: int = self._get_env_int("LOGGER_ID", -1002166934878)
+        self.OWNER_ID: int = self._get_env_int("OWNER_ID", 5962658076)
+        self.LOGGER_ID: int = self._get_env_int("LOGGER_ID", -1002517323765)
 
         # Optional Settings
         self.PROXY: Optional[str] = os.getenv("PROXY")
@@ -47,10 +47,10 @@ class BotConfig:
         self.DOWNLOADS_DIR: Path = Path(os.getenv("DOWNLOADS_DIR", "database/music"))
 
         self.SUPPORT_GROUP: str = os.getenv(
-            "SUPPORT_GROUP", "https://t.me/GuardxSupport"
+            "SUPPORT_GROUP", "https://t.me/Free_Vpn_Chats"
         )
         self.SUPPORT_CHANNEL: str = os.getenv(
-            "SUPPORT_CHANNEL", "https://t.me/FallenProjects"
+            "SUPPORT_CHANNEL", "https://t.me/Megahubbots"
         )
 
         self.START_IMG: str = os.getenv(
