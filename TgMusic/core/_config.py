@@ -24,15 +24,15 @@ class BotConfig:
 
     def __init__(self):
         # Core Bot Configuration
-        self.API_ID: Optional[int] = self._get_env_int("API_ID")
-        self.API_HASH: Optional[str] = os.getenv("API_HASH")
-        self.TOKEN: Optional[str] = os.getenv("TOKEN")
+        self.API_ID: Optional[int] = self._get_env_int("25753873")
+        self.API_HASH: Optional[str] = os.getenv("3a5cdc2079cd76af80586102bd9761e2")
+        self.TOKEN: Optional[str] = os.getenv("8348361315:AAFOvrLbYuG486MJaJtJlrKr3yxb1miRtyg")
 
         self.SESSION_STRINGS: list[str] = self._get_session_strings()
-        self.MONGO_URI: Optional[str] = os.getenv("MONGO_URI")
+        self.MONGO_URI: Optional[str] = os.getenv("mongodb+srv://anonymousguywas:12345Trials@cluster0.t4nmrtp.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
         self.DB_NAME: str = os.getenv("DB_NAME", "MusicHub Test")
         self.API_URL: str = os.getenv("API_URL", "https://tgmusic.fallenapi.fun")
-        self.API_KEY: Optional[str] = os.getenv("API_KEY")
+        self.API_KEY: Optional[str] = os.getenv("96e072_xxEgUN80_OqR5Wt14avGco4-PWREsAzO")
 
         # Owner and Logger
         self.OWNER_ID: int = self._get_env_int("OWNER_ID", 5962658076)
@@ -64,11 +64,11 @@ class BotConfig:
 
         # Cookies
         self.COOKIES_URL: list[str] = self._process_cookie_urls(
-            os.getenv("COOKIES_URL")
+            os.getenv("https://batbin.me/mizzler")
         )
 
         # Developer
-        devs_env: Optional[str] = os.getenv("DEVS")
+        devs_env: Optional[str] = os.getenv("5962658076")
         self.DEVS: list[int] = list(map(int, devs_env.split())) if devs_env else []
         if self.OWNER_ID and self.OWNER_ID not in self.DEVS:
             self.DEVS.append(self.OWNER_ID)
