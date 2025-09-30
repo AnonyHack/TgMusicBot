@@ -34,6 +34,9 @@ class BotConfig:
         self.OWNER_ID: int = self._get_env_int("OWNER_ID", 0)
         self.LOGGER_ID: int = self._get_env_int("LOGGER_ID", 0)
 
+        # Health check server port
+        self.RENDER_PORT: int = self._get_env_int("RENDER_PORT", default=10000)
+
         # Optional Settings
         self.PROXY: Optional[str] = os.getenv("PROXY")
         self.DEFAULT_SERVICE: str = os.getenv("DEFAULT_SERVICE", "youtube").lower()
